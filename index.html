@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel de imágenes</title>
+    <style>
+        .carrusel-container {
+            max-width: 800px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+        }
+        .slide img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="carrusel-container" id="carrusel-dinamico">
+        <div class="slide"><img src="img1.jpg" alt="Imagen 1"></div>
+        <div class="slide"><img src="img2.jpg" alt="Imagen 2"></div>
+        <!-- Agrega más imágenes aquí -->
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlides() {
+          for (let i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";  
+          }
+          currentSlide++;
+          if (currentSlide > slides.length) { currentSlide = 1 }    
+          slides[currentSlide - 1].style.display = "block";  
+          setTimeout(showSlides, 3000); // Cambia cada 3 segundos
+      }
+
+      showSlides();
+    </script>
+</body>
+</html>
